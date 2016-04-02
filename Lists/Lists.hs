@@ -4,13 +4,13 @@ import QuickSpec
 sig = signature {
         maxTermSize = Just 10,
         constants = [
-            constant "[]" ([] :: [A]),
-            constant ":"  ((:) :: A -> [A] -> [A]),
-            constant "++" ((++) :: [A] -> [A] -> [A]),
-            constant "zip" (zip :: [A] -> [B] -> [(A, B)]),
-            constant "length" (length :: [A] -> Int),
-            constant "take" (take :: Int -> [A] -> [A]),
-            constant "drop" (drop :: Int -> [A] -> [A]),
+            constant "[]"      ([] :: [A]),
+            constant ":"       ((:) :: A -> [A] -> [A]),
+            constant "++"      ((++) :: [A] -> [A] -> [A]),
+            constant "zip"     (zip :: [A] -> [B] -> [(A, B)]),
+            constant "length"  (length :: [A] -> Int),
+            constant "take"    (take :: Int -> [A] -> [A]),
+            constant "drop"    (drop :: Int -> [A] -> [A]),
             constant "reverse" (reverse :: [A] -> [A])
         ] ++ predicates
      }
