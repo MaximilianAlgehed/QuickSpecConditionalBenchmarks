@@ -1,4 +1,4 @@
-module TE_suchThat (insts, Pgt, PnotNull, PlengthP) where
+--module TE_suchThat (insts, Pgt, PnotNull, PlengthP) where
 import Lists
 import Test.QuickCheck
 import QuickSpec

@@ -1,4 +1,4 @@
-module TE_hand (Pgt, PnotNull, PlengthP, insts) where
+--module TE_hand (Pgt, PnotNull, PlengthP, insts) where
 import Test.QuickCheck
 import QuickSpec
 import Lists

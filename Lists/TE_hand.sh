@@ -1,4 +1,4 @@
-for x in {1..100}
+for x in {1..10}
 do
-    /usr/bin/time --format %U --output TE_HAND_RESULTS --append runhaskell TE_hand.hs > /dev/null
+    /usr/bin/time --format %U --output TE_HAND_RESULTS --append ./TE_hand > /dev/null
 done

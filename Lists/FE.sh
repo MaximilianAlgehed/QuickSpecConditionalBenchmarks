@@ -1,4 +1,4 @@
-for x in {1..100}
+for x in {1..10}
 do
-    /usr/bin/time --format %U --output FE_RESULTS --append runhaskell TE_suchThat.hs > /dev/null
+    /usr/bin/time --format %U --output FE_RESULTS --append ./FE > /dev/null
 done
