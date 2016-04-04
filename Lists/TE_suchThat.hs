@@ -1,31 +1,28 @@
-module TE_hand (Pgt, PnotNull, PlengthP, insts) where
+module TE_suchThat (insts, Pgt, PnotNull, PlengthP) where
+import Lists
 import Test.QuickCheck
 import QuickSpec
-import Lists
 
 data Pgt = Pgt {x :: Int, y :: Int} deriving (Ord, Eq, Show)
 
 instance Arbitrary Pgt where
     arbitrary = do
-                    x <- arbitrary
-                    y <- arbitrary
-                    return (Pgt (x + abs y) x)
+                    (x, y) <- arbitrary `suchThat` (\(x, y) -> x > y)
+                    return (Pgt x y)
 
 data PnotNull = PnotNull {xs :: [Int]} deriving (Ord, Eq, Show)
 
 instance Arbitrary PnotNull where
     arbitrary = do
-                    x <- arbitrary
-                    xs <- arbitrary
-                    return (PnotNull (x:xs))
+                    xs <- arbitrary `suchThat` (not . null)
+                    return (PnotNull xs)
 
 data PlengthP = PlengthP {n :: Int, xs2 :: [Int]} deriving (Ord, Eq, Show)
 
 instance Arbitrary PlengthP where
     arbitrary = do
-                    x <- arbitrary
-                    xs <- arbitrary
-                    return (PlengthP (length xs - (abs x)+1) xs)
+                    (xs, n) <- arbitrary `suchThat` (\(xs, n) -> n < length xs)
+                    return (PlengthP n xs)
 
 consts = [
             constant "x" x,

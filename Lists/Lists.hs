@@ -1,22 +1,25 @@
 module Lists (sig, predicates) where
-import QuickSpec
+import QuickSpec hiding (insert)
+import Data.List
 
 sig = signature {
-        maxTermSize = Just 10,
+        maxTermSize = Just 6,
         constants = [
-            constant "[]"      ([] :: [A]),
-            constant ":"       ((:) :: A -> [A] -> [A]),
-            constant "++"      ((++) :: [A] -> [A] -> [A]),
-            constant "zip"     (zip :: [A] -> [B] -> [(A, B)]),
-            constant "length"  (length :: [A] -> Int),
-            constant "take"    (take :: Int -> [A] -> [A]),
-            constant "drop"    (drop :: Int -> [A] -> [A]),
-            constant "reverse" (reverse :: [A] -> [A])
+            constant "[]"      ([] :: [Int]),
+            constant ":"       ((:) :: Int -> [Int] -> [Int]),
+            constant "++"      ((++) :: [Int] -> [Int] -> [Int]),
+            constant "zip"     (zip :: [Int] -> [Int] -> [(Int, Int)]),
+            constant "length"  (length :: [Int] -> Int),
+            constant "take"    (take :: Int -> [Int] -> [Int]),
+            constant "drop"    (drop :: Int -> [Int] -> [Int]),
+            constant "reverse" (reverse :: [Int] -> [Int]),
+            constant "insert"  (insert :: Int -> [Int] -> [Int]),
+            constant "sort"    (sort :: [Int] -> [Int])
         ] ++ predicates
      }
 
 predicates = [
         constant ">"       ((>) :: Int -> Int -> Bool),
-        constant "notNull" ((not . null) :: [A] -> Bool),
-        constant "lengthP" ((\xs n -> n < length xs) :: [A] -> Int -> Bool)
+        constant "notNull" ((not . null) :: [Int] -> Bool),
+        constant "lengthP" ((\xs n -> n < length xs) :: [Int] -> Int -> Bool)
     ]
