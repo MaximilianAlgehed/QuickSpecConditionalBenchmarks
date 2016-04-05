@@ -16,12 +16,10 @@ min a b
 
 sig =
   signature {
-    maxTermSize = Just 7,
+    maxTermSize = Just 6,
     constants = [
        constant "max" max,
        constant "min" min,
-       constant "x" (coerce . a21 :: Pgt -> Int),
-       constant "y" (coerce . a22 :: Pgt -> Int),
        constant "+" ((+) :: Int -> Int -> Int),
        constant "*" ((*) :: Int -> Int -> Int),
        constant "/" (div :: Int -> Int -> Int),

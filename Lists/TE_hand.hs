@@ -9,7 +9,7 @@ instance Arbitrary Pgt where
     arbitrary = do
                     x <- arbitrary
                     y <- arbitrary
-                    return (Pgt (x + abs y) x)
+                    return (Pgt (1 + x + abs y) x)
 
 data PnotNull = PnotNull {xs :: [Int]} deriving (Ord, Eq, Show)
 
@@ -25,7 +25,7 @@ instance Arbitrary PlengthP where
     arbitrary = do
                     x <- arbitrary
                     xs <- arbitrary
-                    return (PlengthP (length xs - (abs x)+1) xs)
+                    return (PlengthP (length xs - ((abs x)+1)) xs)
 
 consts = [
             constant "x" x,
@@ -50,3 +50,7 @@ sign = sig {
        }
 
 main = quickSpec sign
+
+prop_1 p = (x p) > (y p)
+prop_2 p = (not . null) (xs p)
+prop_3 p = (n p) < length (xs2 p)

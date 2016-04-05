@@ -47,3 +47,7 @@ sign = sig {
        }
 
 main = quickSpec sign
+
+prop_1 p = (x p) > (y p)
+prop_2 p = (not . null) (xs p)
+prop_3 p = (n p) < length (xs2 p)
